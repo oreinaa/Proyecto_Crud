@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar {{Producto}}</title>
+    {% load static %}
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/diseñolistar.css' %}">
+
+</head>
+
+<body>
+    <header>
+
+        <nav class="navegacion">
+          <ul class="menu">
+            <li><a href="/">{{Menu}}</a></li>
+            <li><a href="/admin">Administracion</a></li>
+            <li><a href="/cliente"> {{Cliente}}</a></li>
+            <li><a href="/producto">{{Producto}}</a></li>
+            <li><a href="/listarventas">{{Venta}}</a></li>
+    
+          </ul>
+        </nav>
+      </header>
+    <h1>Listado de {{Producto}}</h1>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>precio</th>
+                <th>stock</th>
+                <th>IVA</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+ <nav class="linea">
+    <l1><a class="btn btn-primary" href="{% url 'producto' %}">Nuevo</a></l1>
+ </nav>       
+
+        <body >
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.stock }}</td>
+                <td>{{ producto.iva }}</td>
+                <td>
+                    <ul>
+                        <l1><a class="btn btn-primary" href="{% url 'editarproducto' producto.id %}">Modifcar</a></l1>
+                        <l1><a class="btn btn-primary" href="{% url 'eliminarproducto' producto.id %}">Eliminar</a></l1>
+                    </ul>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+        </body>
+
+    </table>
+</body>
+</html>

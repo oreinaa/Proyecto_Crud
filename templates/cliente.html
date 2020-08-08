@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% load static %}
+   <link rel="stylesheet" href="{% static 'bootstrap/css/diseño.css' %}">
+  <title>{{Cliente}}</title>
+</head>
+<body>
+   <header>
+
+      <nav class="navegacion">
+        <ul class="menu">
+          <li><a href="/">{{Menu}}</a></li>
+          <li><a href="/admin">Administracion</a></li>
+          <li><a href="/cliente"> {{Cliente}}</a></li>
+          <li><a href="/producto">{{Producto}}</a></li>
+          <li><a href="/listarventas">{{Venta}}</a></li>
+  
+        </ul>
+      </nav>
+    </header>
+
+    <nav class="linea1">
+      <l1><a class="btn btn-primary" href="{% url 'listarcliente' %}">Consultar</a></l1>
+    </nav>
+
+  <div class="container">
+    <form  id="contact" action="" method="POST">
+      <h1 >Clientes</h1>
+      {% csrf_token %}  
+      <legend class="controls">
+         <label for="">RUC: {{form.ruc}}</label> 
+      </legend>
+      <legend>
+         <label for="">Nombre: {{form.nombre}}</label> 
+      </legend>
+      <legend>
+         <label for="">Direccion: {{form.direccion}}</label> 
+      </legend>
+      <legend>
+         <label for="">Producto: {{form.producto}}</label> 
+      </legend>
+      <button class="boton btn-p" type="submit"> {{accion}} </button> 
+    </form>
+    
+
+   </div>
+
+</body>
+</html>

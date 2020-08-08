@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar {{Factura}}</title>
+    {% load static %}
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/diseñolistar.css' %}">
+
+</head>
+
+<body>
+    <header>
+
+        <nav class="navegacion">
+          <ul class="menu">
+            <li><a href="/">{{Menu}}</a></li>
+            <li><a href="/admin">Administracion</a></li>
+            <li><a href="/cliente"> {{Cliente}}</a></li>
+            <li><a href="/producto">{{Producto}}</a></li>
+            <li><a href="/listarventas">{{Venta}}</a></li>
+    
+          </ul>
+        </nav>
+      </header>
+    <h1>Listado de {{Venta}}</h1>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cliente</th>
+                <th>Total</th>
+                <th>Fecha de Creacion</th>
+            </tr>
+        </thead>
+ <legend>
+ </legend>       
+
+        <body>
+            {% for factura in facturas %}
+            <tr>
+                <td>{{ factura.id }}</td>
+                <td>{{ factura.cliente }}</td>
+                <td>{{ factura.total }}</td>
+                <td>{{ factura.creacion }}</td>
+                <td>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+        </body>
+
+    </table>
+</body>
+
+</html>
